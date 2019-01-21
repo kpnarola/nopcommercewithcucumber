@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class MyStepdefs extends Utils {
     RegistrationPage register = new RegistrationPage();
@@ -147,4 +148,25 @@ public class MyStepdefs extends Utils {
     public void userShouldNotBeAbleToSendEmailSuccessfully() {
         Utils.assertByGetText("Only registered customers can use email a friend feature", By.xpath("//li[contains(text(),'Only registered customers can use email a friend feature')]"), "Display Message is not as per expected, test is failed");
     }
+    //user should be able to sort buy price high to low
+    @When("^user click on apparel category from home page$")
+    public void userClickOnApparelCategoryFromHomePage() {
+        homePage.clickOnAppareal();
+    }
+
+    @And("^click on clothing with sort by price high to low from drop down menu$")
+    public void clickOnClothingWithSortByPriceHighToLowFromDropDownMenu() {
+        clothingPage.sortBYPriceHighToLOw();
+    }
+    @And("^verifying that clothing price sorting high to low$")
+    public void verifyingThatClothingPriceSortingHighToLow() {
+        System.out.println(clothingPage.assertForSortByPriceHighToLow());
+    }
+    @Then("^user should be able to sort by price high to low$")
+    public void userShouldBeAbleToSortByPriceHighToLow() {
+        Assert.assertTrue(clothingPage.assertForSortByPriceHighToLow(),"Price is not sorted high to low");
+
+    }
+
+
 }
