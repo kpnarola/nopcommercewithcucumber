@@ -8,7 +8,7 @@ public class LoadProperty extends Utils{
     static Properties prop;
     static FileInputStream input;
     static String fileName = "Config.properties";
-    static String fileLocation = "src\\test\\Resources\\";
+    static String fileLocation = "src\\test\\Resources\\TestData\\";
 
     public String getProperty(String key) {
         prop = new Properties();
