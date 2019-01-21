@@ -63,28 +63,42 @@ public class MyStepdefs extends Utils {
         Utils.assertByGetText("Your message has been sent.", By.xpath("//div[@class= 'result']"), "Sorry You are not able to send email successfully");
     }
     //To verify user should be able to buy any single product successfully
-
-
+    @Given("^user is on the main page of website$")
+    public void userIsOnTheMainPageOfWebsite() {
+    }
+    @When("^user proceed registration successfully$")
+    public void userProceedRegistrationSuccessfully() {
+        homePage.clickOnRegistrationButton();
+        register.registration();
+    }
+    @And("^click on register continue button$")
+    public void clickOnRegisterContinueButton() {
+        registerResultContinuePage.clickOnRegisterContinueButton();
+    }
+    @And("^select hct one m android lollipop product from home page$")
+    public void selectHctOneMAndroidLollipopProductFromHomePage() {
+        homePage.clickOnHTCOneM8AndroidL50Lollipop();
+    }
+    @And("^navigate to product page$")
+    public void navigateToProductPage() {
+        productPageForHomePageProducts.HTCOneM8AndroidL5_0Lollipop();
+    }
     @And("^add product in basket and accept terms and condition$")
     public void addProductInBasketAndAcceptTermsAndCondition() {
-
+        shoppingCartPage.clickOnTermsOfService();
     }
-
     @And("^click on  check out button$")
     public void clickOnCheckOutButton() {
-
+        shoppingCartPage.clickCheckOutButton();
     }
-
     @And("^proceed check out with required detail$")
     public void proceedCheckOutWithRequiredDetail() {
-
+        checkOutPage.userIsAbleToBuyProductSuccessfully();
     }
-
     @Then("^registered user should be able to buy any product successfully$")
     public void registeredUserShouldBeAbleToBuyAnyProductSuccessfully() {
-
+        Utils.assertByGetText("Your order has been successfully processed!", By.xpath("//strong[contains(text(),'Your order has been successfully processed!')]"), "You are not able to buy product successfully, test failed");
     }
 
 
-    
 }
