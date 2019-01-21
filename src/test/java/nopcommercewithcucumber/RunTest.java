@@ -4,7 +4,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
-@CucumberOptions(features = ".",tags = "@termsAndCondition")
+@CucumberOptions(features = ".",tags = "@canNotEmailAProduct")
 
 public class RunTest {
 

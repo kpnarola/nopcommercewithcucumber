@@ -132,4 +132,19 @@ public class MyStepdefs extends Utils {
         );
 
     }
+    //unregistered user should not be able to send email
+    @When("^click on product apple mac book from home page$")
+    public void clickOnProductAppleMacBookFromHomePage() {
+        homePage.clickOnAppleMacBookPro13_Inch();
+    }
+
+    @And("^click on email a friend button for product apple mac book$")
+    public void clickOnEmailAFriendButtonForProductAppleMacBook() {
+        emailAFriend.emailAFriendForUnRegisterUser();
+    }
+
+    @Then("^user should not be able to send email successfully$")
+    public void userShouldNotBeAbleToSendEmailSuccessfully() {
+        Utils.assertByGetText("Only registered customers can use email a friend feature", By.xpath("//li[contains(text(),'Only registered customers can use email a friend feature')]"), "Display Message is not as per expected, test is failed");
+    }
 }
