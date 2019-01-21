@@ -99,6 +99,37 @@ public class MyStepdefs extends Utils {
     public void registeredUserShouldBeAbleToBuyAnyProductSuccessfully() {
         Utils.assertByGetText("Your order has been successfully processed!", By.xpath("//strong[contains(text(),'Your order has been successfully processed!')]"), "You are not able to buy product successfully, test failed");
     }
+    //user must have to accept terms and condition for buy any product successfully
 
+    @Given("^user is on home page of website$")
+    public void userIsOnHomePageOfWebsite() {
 
+    }
+
+    @When("^user click on register button from homepage$")
+    public void userClickOnRegisterButtonFromHomepage() {
+        homePage.clickOnRegistrationButton();
+    }
+
+    @And("^select product build your own computer from home page$")
+    public void selectProductBuildYourOwnComputerFromHomePage() {
+        homePage.clickOnBuildYourOwnComputer();
+    }
+
+    @And("^navigate to build your own computer product page$")
+    public void navigateToBuildYourOwnComputerProductPage() {
+        productPageForHomePageProducts.buildYourOwnComputer();
+    }
+
+    @And("^add product to basket and proceed checkout without accepting terms and condition$")
+    public void addProductToBasketAndProceedCheckoutWithoutAcceptingTermsAndCondition() {
+        shoppingCartPage.clickCheckOutButton();
+    }
+
+    @Then("^user should not be able to buy that product successfully$")
+    public void userShouldNotBeAbleToBuyThatProductSuccessfully() {
+        Utils.assertByGetText("Please accept the terms of service before the next step.", By.xpath("//p[contains(text(),'Please accept the terms of service before the next step.')]"), "Display message is not as per expected, Test failed"
+        );
+
+    }
 }
